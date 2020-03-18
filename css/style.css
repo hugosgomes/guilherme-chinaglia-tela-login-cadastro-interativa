@@ -35,11 +35,9 @@ body {
     background-color: #58af9b;
     width: 40%;
     height: 100%;
+    left: 0%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-
-
-    left: 60%;
 }
 
 .title {
@@ -86,6 +84,7 @@ body {
     color: #fff;
     background: transparent;
     border: 1px solid #fff;
+    transition: background-color .5s;
 }
 
 .btn-primary:hover {
@@ -97,7 +96,8 @@ body {
 .btn-secondary {
     color: #58af9b;
     background: #fff;
-    border: 1px solid #58af9b;    
+    border: 1px solid #58af9b; 
+    transition: background-color .5s;
 }
 
 .btn-secondary:hover {
@@ -108,17 +108,20 @@ body {
 
 .first-content {
     display: flex;
-    display: none;
+}
+
+.first-content .second-column {
+    z-index: 11;
 }
 
 .first-column {
     text-align: center;
-    flex: 1 0 auto;
+    width: 40%;
     z-index: 1;
 }
 
 .second-column {
-    flex: 2 0 auto;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,6 +129,10 @@ body {
 
 .social-media {
     margin: 1rem 0;
+}
+
+.link-social-media .item-social-media {
+    transition: background-color .5s;
 }
 
 .link-social-media:hover .item-social-media {
@@ -166,6 +173,11 @@ body {
     background-color: #ecf0f1;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px #ecf0f1 inset !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
 .label-input {
     background-color: #ecf0f1;
     display: flex;
@@ -182,15 +194,17 @@ body {
 
 .second-content {
     position: absolute;
-    display: flex;
+    /* display: none; */
 }
 
 .second-content .first-column {
     order: 2;
+    z-index: -1;
 }
 
 .second-content .second-column {
     order: 1;
+    z-index: -1;
 }
 
 .password {
@@ -202,4 +216,163 @@ body {
 
 .password::first-letter {
     text-transform: capitalize;
+}
+
+.sign-in-js .first-content .first-column {
+    z-index: -1;
+}
+
+.sign-in-js .second-content .first-column {
+    z-index: 13;
+}
+
+.sign-in-js .second-content .second-column {
+    z-index: 11;
+}
+
+.sign-in-js .content::before {
+    left: 60%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    animation: slidein 2s;
+    z-index: 12;
+}
+
+.sign-up-js .content::before {
+    animation: slideout 2s;
+    z-index: 12;
+}
+
+.sign-up-js .second-content .first-column {
+    z-index: -1;
+}
+
+.sign-up-js .first-content .first-column{
+    z-index: 13;
+}
+
+.sign-up-js .first-content .second-column {
+    z-index: 11;
+}
+
+/*DESLOCAMENTO DO CONTEÚDO ATRÁS DO CONTENT:BEFORE*/
+.sign-in-js .first-content .second-column {
+    z-index: -1;
+    position: relative;
+    animation: deslocamentoEsq 3s;
+}
+
+.sign-up-js .second-content .second-column {
+    position: relative;
+    z-index: -1;
+    animation: deslocamentoDir 3s;
+}
+
+/*ANIMAÇÃO CSS PARA O CONTEÚDO*/
+@keyframes deslocamentoEsq {
+    from {
+        left: 0;
+        opacity: 1;
+        z-index: 12;
+    }
+
+    25% {
+        left: -80px;
+        opacity: .5;
+    }
+
+    50% {
+        left: -100px;
+        opacity: .8;
+        z-index: -1;
+    }
+
+    to {
+        left: -110px;
+        opacity: 0;
+    }
+}
+
+@keyframes deslocamentoDir {
+    from {
+        left: 0;
+        opacity: 1;
+        z-index: 12;
+    }
+
+    25% {
+        left: 80px;
+        opacity: .5;
+    }
+
+    50% {
+        left: 100px;
+        opacity: .8;
+        z-index: -1;
+    }
+
+    to {
+        left: 110px;
+        opacity: 0;
+    }
+}
+
+/*ANIMAÇÃO css*/
+
+@keyframes slidein {
+
+    from {
+        left: 0;
+        width: 40%;
+    }
+
+    25% {
+        left: 15%;
+        width: 50%;
+    }
+
+    50% {
+        left: 30%;
+        width: 60%;
+    }
+
+    75% {
+        left: 45%;
+        width: 50%;
+    }
+
+    to {
+        left: 60%;
+        width: 40%;
+    }
+}
+
+@keyframes slideout {
+
+    from {
+        left: 60%;
+        width: 40%;
+    }
+
+    25% {
+        left: 45%;
+        width: 50%;
+    }
+
+    50% {
+        left: 30%;
+        width: 60%;
+    }
+
+    75% {
+        left: 15%;
+        width: 50%;
+    }
+
+    to {
+        left: 0;
+        width: 40%;
+    }
 }
